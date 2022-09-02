@@ -7,6 +7,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "rimraf ./dist && tsc",
 		"start": "npm run build && node ./dist/index.js",
+		"migrate": "docker exec urlshortener-api-1 npx sequelize-cli db:migrate && docker exec urlshortener-api-1 npx sequelize-cli db:seed:all",
 		"dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/index.ts"
 	},
 	"keywords": [],

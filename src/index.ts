@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req: Request, res: Response) => {
 	return res.send({ status: "sucesso" });
 });
- 
+
 setRoutes(app);
 
 app.listen(3000, () => {

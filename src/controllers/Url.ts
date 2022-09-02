@@ -10,6 +10,8 @@ export const createUrl = async (req: Request, res: Response) => {
 
 	if (!originalUrl) return res.status(400).send({ error: "Empty Url" });
 
+	if (!categoryId) return res.status(400).send({ error: "Empty Category" });
+
 	const parsedUrl = urlparse.parse(originalUrl);
 
 	if (!parsedUrl.protocol || !parsedUrl.host) {
@@ -51,9 +53,7 @@ export const createUrl = async (req: Request, res: Response) => {
 };
 
 export const getAllUrl = async (req: Request, res: Response) => {
-	const urls = await Url.findAll({
-		include: [{ model: Category }],
-	});
+	const urls = await Url.findAll();
 
 	res.status(200).send(urls);
 };
